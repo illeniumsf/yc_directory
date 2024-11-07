@@ -58,11 +58,7 @@ export const metadata: Metadata = {
   description: 'Pitch, Vote and Grow',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   return (
     <html lang='en'>
       <body className={workSans.variable}>{children}</body>

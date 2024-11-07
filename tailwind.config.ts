@@ -13,7 +13,6 @@ const config: Config = {
       screens: {
         xs: '475px',
       },
-      // You can get all colors below from Figma
       colors: {
         primary: {
           '100': '#FFE8F0',
