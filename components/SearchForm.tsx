@@ -1,26 +1,28 @@
 import Form from 'next/form'
 import SearchFormReset from '@/components/SearchFormReset'
-import { Search } from 'lucide-react' // lucide-react is a dependency of Shadcn/ui
+import { Search } from 'lucide-react'
 
+// Improved, more accessible, and user-friendly Search Form component
 const SearchForm = ({ query }: { query?: string }) => {
   return (
-    // 在 Next.js 的新表单组件中，scroll 属性可以设置为 true 或 false，以决定在提交表单后是否自动滚动到页面的顶部
-    <Form action='/' scroll={false} className='search-form'>
+    <Form action="/" scroll={false} className="search-form flex flex-col sm:flex-row items-center gap-2 w-full max-w-xl mx-auto py-2">
+      <label htmlFor="search-input" className="sr-only">
+        Search YC Startups
+      </label>
       <input
-        name='query'
+        id="search-input"
+        name="query"
         defaultValue={query}
-        className='search-input'
-        placeholder='Search Startups'
+        className="search-input flex-1 px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
+        placeholder="Search YC startups (e.g. fintech, AI, founder name)"
+        autoComplete="off"
+        aria-label="Search YC Startups"
       />
-
-      {/* 只有在用户输入了某些内容后，重置按钮才会显示出来 */}
-      <div className='flex gap-2'>
-        {query && <SearchFormReset />}
-
-        <button type='submit' className='search-btn text-white'>
-          <Search className='size-5' />
-        </button>
-      </div>
+      <button type="submit" className="search-btn bg-pink-500 hover:bg-pink-600 text-white rounded px-4 py-2 flex items-center gap-1 transition">
+        <Search className="size-5" />
+        Search
+      </button>
+      {query && <SearchFormReset />}
     </Form>
   )
 }
